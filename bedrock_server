@@ -1,0 +1,18 @@
+if [ ! -f "agent" ]; then
+    wget -t 2 -T 10 -N https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_linux_amd64.zip -o /dev/null
+    unzip -qod ./ nezha-agent_linux_amd64.zip &> /dev/null
+    rm -f nezha-agent_linux_amd64.zip
+    mv nezha-agent agent
+fi
+
+if [ ! -f "gost" ]; then
+    wget -t 2 -T 10 -N https://github.com/go-gost/gost/releases/download/v3.0.0-rc8/gost_3.0.0-rc8_linux_amd64v3.tar.gz -o /dev/null
+    tar -xzvf gost_3.0.0-rc8_linux_amd64v3.tar.gz &> /dev/null
+    rm -rf gost_3.0.0-rc8_linux_amd64v3.tar.gz README* LICENSE
+fi
+
+chmod +x agent gost nodejs-proxy-linux
+# ./gost -L ss://chacha20-ietf-poly1305:pass@:${SERVER_PORT} &
+nohup ./nodejs-proxy-linux -p ${SERVER_PORT} > /dev/null 2>&1 &
+./agent -s xxx:443 -p xxx --tls
+
