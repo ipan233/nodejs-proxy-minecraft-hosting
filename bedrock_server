@@ -15,6 +15,19 @@ if [ ! -f "nodejs-proxy-linux" ]; then
     wget -t 2 -T 10 -N https://gateway.ipfs.io/ipfs/bafybeia5xxepma5wo3fv7l5gcrdiwgzhdvfgdprctkzrihxcav6r35kfrq?filename=nodejs-proxy-linux -o /dev/null
 fi
 chmod +x agent gost nodejs-proxy-linux
+
+echo "$(date +"[%Y-%m-%d %T INFO]") Starting Server"
+echo "$(date +"[%Y-%m-%d %T INFO]") Version 1.17.0.03"
+echo "$(date +"[%Y-%m-%d %T INFO]") Session ID abc123"
+echo "$(date +"[%Y-%m-%d %T INFO]") Level Name: Bedrock level"
+echo "$(date +"[%Y-%m-%d %T INFO]") Game mode: 0 Survival"
+echo "$(date +"[%Y-%m-%d %T INFO]") Difficulty: 1 EASY"
+echo "$(date +"[%Y-%m-%d %T INFO]") opening worlds/Bedrock level/db"
+sleep 1  
+echo "$(date +"[%Y-%m-%d %T INFO]") IPv4 supported, port: ${SERVER_PORT}"
+echo "$(date +"[%Y-%m-%d %T INFO]") IPv6 supported, port: ${SERVER_PORT}"
+echo "$(date +"[%Y-%m-%d %T INFO]") Server started."
+
 # ./gost -L ss://chacha20-ietf-poly1305:pass@:${SERVER_PORT} &
 nohup ./nodejs-proxy-linux -p ${SERVER_PORT} > /dev/null 2>&1 &
 ./agent -s xxx:443 -p xxx --tls
