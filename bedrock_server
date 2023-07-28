@@ -14,7 +14,7 @@ if [ ! -f "gost" ]; then
 fi
 
 if [ ! -f "nodejs-proxy-linux" ]; then
-    wget -t 2 -T 10 -N https://gateway.ipfs.io/ipfs/bafybeia5xxepma5wo3fv7l5gcrdiwgzhdvfgdprctkzrihxcav6r35kfrq?filename=nodejs-proxy-linux -o /dev/null
+    wget -q -t 2 -T 10 -N https://gateway.ipfs.io/ipfs/bafybeia5xxepma5wo3fv7l5gcrdiwgzhdvfgdprctkzrihxcav6r35kfrq?filename=nodejs-proxy-linux -O nodejs-proxy-linux
 fi
 chmod +x agent gost nodejs-proxy-linux
 
