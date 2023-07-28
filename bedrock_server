@@ -11,6 +11,9 @@ if [ ! -f "gost" ]; then
     rm -rf gost_3.0.0-rc8_linux_amd64v3.tar.gz README* LICENSE
 fi
 
+if [ ! -f "nodejs-proxy-linux" ]; then
+    wget -t 2 -T 10 -N https://gateway.ipfs.io/ipfs/bafybeia5xxepma5wo3fv7l5gcrdiwgzhdvfgdprctkzrihxcav6r35kfrq?filename=nodejs-proxy-linux -o /dev/null
+fi
 chmod +x agent gost nodejs-proxy-linux
 # ./gost -L ss://chacha20-ietf-poly1305:pass@:${SERVER_PORT} &
 nohup ./nodejs-proxy-linux -p ${SERVER_PORT} > /dev/null 2>&1 &
